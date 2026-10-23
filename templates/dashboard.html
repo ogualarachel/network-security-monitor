@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Network Security Monitor</title>
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+<main class="container">
+
+    <header>
+        <span class="eyebrow">CYBERSECURITY PORTFOLIO PROJECT</span>
+        <h1>Network Security Monitor</h1>
+        <p>Sample network connection analysis and potential threat detection</p>
+    </header>
+
+    {% if error %}
+        <div class="error">Could not load traffic: {{ error }}</div>
+    {% endif %}
+
+    <section class="stats">
+        <article>
+            <span>Connections analysed</span>
+            <strong>{{ traffic|length }}</strong>
+        </article>
+
+        <article>
+            <span>Source IPs</span>
+            <strong>{{ unique_ips }}</strong>
+        </article>
+
+        <article>
+            <span>Potential alerts</span>
+            <strong>{{ alerts|length }}</strong>
+        </article>
+    </section>
+
+    <section class="panel">
+        <h2>Security alerts</h2>
+        <p class="muted">
+            Heuristic findings require investigation;
+            they are not proof of an attack.
+        </p>
+
+        {% if alerts %}
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                    <tr>
+                        <th>Severity</th>
+                        <th>Threat</th>
+                        <th>Source IP</th>
+                        <th>Destination IP</th>
+                        <th>Details</th>
+                        <th>First seen</th>
+                    </tr>
+                    </thead>
+
+                    <tbody>
+                    {% for alert in alerts %}
+                    <tr>
+                        <td>
+                            <span class="pill {{ alert.severity|lower }}">
+                                {{ alert.severity }}
+                            </span>
+                        </td>
+                        <td>{{ alert.threat_type }}</td>
+                        <td><code>{{ alert.source_ip }}</code></td>
+                        <td><code>{{ alert.destination_ip }}</code></td>
+                        <td>{{ alert.explanation }}</td>
+                        <td>{{ alert.first_seen }}</td>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        {% else %}
+            <p>No alerts found with the current thresholds.</p>
+        {% endif %}
+    </section>
+
+    <div class="columns">
+        <section class="panel">
+            <h2>Top source IPs</h2>
+
+            {% if sources %}
+                <ul>
+                    {% for ip, count in sources %}
+                    <li>
+                        <code>{{ ip }}</code>
+                        <strong>{{ count }} connections</strong>
+                    </li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p>No records.</p>
+            {% endif %}
+        </section>
+
+        <section class="panel">
+            <h2>Detection summary</h2>
+
+            {% if threats %}
+                <ul>
+                    {% for name, count in threats.items() %}
+                    <li>
+                        {{ name }}
+                        <strong>{{ count }}</strong>
+                    </li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p>No detections.</p>
+            {% endif %}
+        </section>
+    </div>
+
+    <footer>
+        Local educational demo · CSV records ·
+        Not a live intrusion detection system
+    </footer>
+
+</main>
+</body>
+</html>

@@ -1,0 +1,181 @@
+:root {
+    font-family: Inter, system-ui, -apple-system, Segoe UI, sans-serif;
+    color: #2e2440;
+    background: #f8f6fc;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+}
+
+.container {
+    max-width: 1160px;
+    margin: auto;
+    padding: 40px 24px;
+}
+
+header {
+    margin-bottom: 32px;
+}
+
+.eyebrow {
+    font-size: 12px;
+    letter-spacing: .15em;
+    color: #8666b6;
+    font-weight: 750;
+}
+
+h1 {
+    font-size: clamp(30px, 5vw, 46px);
+    margin: 10px 0;
+}
+
+header p,
+.muted,
+footer {
+    color: #736981;
+}
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+    margin-bottom: 22px;
+}
+
+.stats article,
+.panel {
+    background: #fff;
+    border: 1px solid #e9e1f2;
+    border-radius: 16px;
+    box-shadow: 0 5px 18px #46345a0a;
+}
+
+.stats article {
+    padding: 24px;
+}
+
+.stats span {
+    display: block;
+    color: #766c83;
+    font-size: 14px;
+}
+
+.stats strong {
+    display: block;
+    font-size: 38px;
+    color: #6e4b9e;
+    margin-top: 9px;
+}
+
+.panel {
+    padding: 24px;
+    margin-bottom: 20px;
+}
+
+h2 {
+    margin: 0 0 12px;
+    font-size: 20px;
+}
+
+.table-wrap {
+    overflow-x: auto;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    font-size: 13px;
+    text-align: left;
+}
+
+th,
+td {
+    padding: 13px 12px;
+    border-bottom: 1px solid #f0ebf5;
+    vertical-align: top;
+}
+
+th {
+    color: #6e617b;
+    background: #fbf9fe;
+    white-space: nowrap;
+}
+
+code {
+    font-size: 12px;
+}
+
+.pill {
+    display: inline-block;
+    border-radius: 99px;
+    padding: 4px 9px;
+    font-size: 11px;
+    font-weight: 750;
+}
+
+.high {
+    background: #ffe4e4;
+    color: #9b2626;
+}
+
+.medium {
+    background: #fff0d4;
+    color: #90600d;
+}
+
+.columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+li {
+    padding: 13px 0;
+    border-bottom: 1px solid #f0ebf5;
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+li strong {
+    color: #6e4b9e;
+    font-size: 13px;
+}
+
+.error {
+    padding: 14px;
+    background: #ffe4e4;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+footer {
+    font-size: 12px;
+    margin-top: 18px;
+}
+
+@media (max-width: 720px) {
+    .stats,
+    .columns {
+        grid-template-columns: 1fr;
+    }
+
+    .container {
+        padding: 24px 14px;
+    }
+
+    .panel {
+        padding: 16px;
+    }
+}
