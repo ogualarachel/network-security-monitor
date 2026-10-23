@@ -1,9 +1,9 @@
 # Network Security Monitor & Threat Detection
 
-A Python cybersecurity portfolio prototype that analyses synthetic
+This is a Python cybersecurity portfolio prototype, created to analyses synthetic
 network connection logs stored in CSV files.
 
-The application identifies potentially suspicious activity and
+This prototype identifies potential suspicious activity and
 displays security alerts in a local Flask dashboard.
 
 ## Features
@@ -74,7 +74,7 @@ These thresholds are configurable and intended for demonstration.
 
 ## Limitations
 
-This is an educational cybersecurity prototype.
+This is soley an educational cybersecurity prototype.
 
 It analyses saved CSV connection logs rather than capturing
 live network packets. Detection results indicate potentially
